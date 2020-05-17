@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block app_content %}
+<body>
+<div id="content">
+  <div id="content-header">
+    <div id="breadcrumb"> <a href="{{ url_for('index') }}" title="Перейти на главную" class="tip-bottom"><i class="icon-home"></i> Главная</a><a href="#" class="current">Редактировать</a> </div>
+    <h1>Редактировать</h1>
+  </div>
+  <div class="container-fluid">
+    <div class="row-fluid">
+      <div class="span6">
+        <div class="widget-box">
+          <div class="widget-title"> <span class="icon"> <i class="icon-pencil"></i> </span>
+            <h5></h5>
+          </div>
+          <div class="widget-content nopadding">
+            <form action="" method="post" enctype=multipart/form-data class="form-horizontal">
+              {{ form.hidden_tag() }}
+              <div class="control-group">
+                {{ form.username.label(class="control-label") }}
+                <div class="controls">
+                  {{ form.username(class="span11", placeholder="Введите новый логин") }}
+                </div>
+              </div>
+              <div class="control-group">
+                {{ form.notes.label(class="control-label") }}
+                <div class="controls">
+                  {{ form.notes(class="area") }}
+                  {% for error in form.notes.errors %}
+                  <span style="color: red;">[{{ error }}]</span>
+                  {% endfor %}
+                </div>
+              </div>
+              <div class="form-actions">
+                {{ form.submit(class="btn btn-primary") }}
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row-fluid">
+  <div id="footer" class="span12"> 2020 ОРХБЗ Росгвардии <a href="{{ url_for('index') }}">База данных</a> </div>
+</div>
+</body>
+{% endblock %}

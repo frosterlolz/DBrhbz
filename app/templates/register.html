@@ -1,0 +1,168 @@
+{% extends "base.html" %}
+{% block app_content %}
+<html lang="en">
+<body>
+<div id="content">
+  <div id="content-header">
+    <div id="breadcrumb"> <a href="{{ url_for('index') }}" title="Перейти на главную" class="tip-bottom"><i class="icon-home"></i> Главная</a><a href="#" class="current">Добавить вещество</a> </div>
+    <h1>Добавить вещество</h1>
+  </div>
+  <div class="container-fluid">
+    <div class="row-fluid">
+      <div class="span6">
+        <div class="widget-box">
+          <div class="widget-title"> <span class="icon"> <i class="icon-align-justify"></i> </span>
+            <h5></h5>
+          </div>
+          <div class="widget-content nopadding">
+            <form action="" method="post" enctype=multipart/form-data class="form-horizontal">
+              {{ form.hidden_tag() }}
+              <div class="control-group">
+                {{ form.title.label(class="control-label") }}
+                <div class="controls">
+                  {{ form.title(class="span11", placeholder="Введите название") }}
+                </div>
+              </div>
+              <div class="controls">
+                <h4>ФИЗИЧЕСКИЕ СВОЙСТВА</h4>
+              </div>
+              <div class="control-group">
+                {{ form.fiz.label(class="control-label") }}
+                <div class="controls">
+                  {{ form.fiz(class="form-control") }}
+                  {% for error in form.fiz.errors %}
+                  <span style="color: red;">[{{ error }}]</span>
+                  {% endfor %}
+                </div>
+              </div>
+              <div class="control-group">
+                  {{ form.fiz2.label(class="control-label") }}
+                <div class="controls">
+                  {{ form.fiz2(class="form-control") }}
+                </div>
+              </div>
+                <div class="controls">
+                <h4>ПУТИ ОТРАВЛЕНИЯ</h4>
+                </div>
+                <div class="control-group">
+                  {{ form.put.label(class="control-label") }}
+                <div class="controls">
+                  {{ form.put(class="form-control") }}
+                </div>
+              </div>
+                <div class="control-group">
+                  {{ form.put2.label(class="control-label") }}
+                <div class="controls">
+                  {{ form.put2(class="form-control") }}
+                </div>
+              </div>
+                <div class="control-group">
+                  {{ form.put3.label(class="control-label") }}
+                <div class="controls">
+                  {{ form.put3(class="form-control") }}
+                </div>
+              </div>
+                <div class="control-group">
+                  {{ form.put4.label(class="control-label") }}
+                <div class="controls">
+                  {{ form.put4(class="form-control") }}
+                </div>
+              </div>
+                <div class="controls">
+                <h4>КЛИНИКА ПОРАЖЕНИЯ</h4>
+                </div>
+                <div class="control-group">
+                  {{ form.kli.label(class="control-label") }}
+                <div class="controls">
+                  {{ form.kli(class="form-control") }}
+                </div>
+              </div>
+                <div class="control-group">
+                  {{ form.kli2.label(class="control-label") }}
+                <div class="controls">
+                  {{ form.kli2(class="form-control") }}
+                </div>
+              </div>
+                <div class="control-group">
+                  {{ form.kli3.label(class="control-label") }}
+                <div class="controls">
+                  {{ form.kli3(class="form-control") }}
+                </div>
+              </div>
+                <div class="control-group">
+                  {{ form.kli4.label(class="control-label") }}
+                <div class="controls">
+                  {{ form.kli4(class="form-control") }}
+                </div>
+              </div>
+                <div class="control-group">
+                  {{ form.kli5.label(class="control-label") }}
+                <div class="controls">
+                  {{ form.kli5(class="form-control") }}
+                </div>
+              </div>
+                <div class="control-group">
+                  {{ form.kli6.label(class="control-label") }}
+                <div class="controls">
+                  {{ form.kli6(class="form-control") }}
+                </div>
+              </div>
+                <div class="control-group">
+                  {{ form.kli7.label(class="control-label") }}
+                <div class="controls">
+                  {{ form.kli7(class="form-control") }}
+                </div>
+              </div>
+                <div class="control-group">
+                  {{ form.kli8.label(class="control-label") }}
+                <div class="controls">
+                  {{ form.kli8(class="form-control") }}
+                </div>
+              </div>
+                <div class="control-group">
+                  {{ form.kli9.label(class="control-label") }}
+                <div class="controls">
+                  {{ form.kli9(class="form-control") }}
+                </div>
+              </div>
+                <div class="control-group">
+                  {{ form.kli10.label(class="control-label") }}
+                <div class="controls">
+                  {{ form.kli10(class="form-control") }}
+                </div>
+              </div>
+                <div class="control-group">
+                    <label class="control-label">Загрузка файла</label>
+                  <div class="controls">
+                    {{ form.filename() }}
+                  </div>
+                </div>
+              <div class="form-actions">
+                {{ form.submit(class="btn btn-primary") }}
+                <a href="#myModal" data-toggle="modal" class="btn btn-info">Справка</a>
+                <div id="myModal" class="modal hide">
+                  <div class="modal-header">
+                    <button data-dismiss="modal" class="close" type="button">×</button>
+                    <h3>Справка по добавлению нового вещества</h3>
+                  </div>
+                  <div class="modal-body">
+                    <p>1. Заполните все поля </p>
+                    <p>2. Выберите карточку вещества, которую необходимо загрузить.</p>
+                    <p>3. После проверки данных нажмите "Сохранить"</p>
+                    <p><code>ВАЖНО! Формат загружаемого файла должен быть ".pdf"</code></p>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row-fluid">
+  <div id="footer" class="span12"> 2020 ОРХБЗ Росгвардии <a href="{{ url_for('index') }}">База данных</a> </div>
+</div>
+</body>
+</html>
+{% endblock %}

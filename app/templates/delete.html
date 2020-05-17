@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block app_content %}
+<body>
+<div id="content">
+    <div id="content-header">
+        <div id="breadcrumb"> <a href="{{ url_for('index') }}" title="Перейти на главную" class="tip-bottom"><i class="icon-home"></i> Главная</a> <a href="#" class="current">Удалить вещество</a> </div>
+        <h1>Удалить вещество</h1>
+    </div>
+    <div class="container-fluid">
+        <form action="" method="post">
+            {{ form.hidden_tag() }}
+            <div class="control-group">
+                {{ form.title.label(class="control-label") }}
+                <div class="controls">
+                    {{ form.title(class="form-control") }}
+                    {% for error in form.title.errors %}
+                    <span style="color: red;">[{{ error }}]</span>
+                    {% endfor %}
+                </div>
+            </div>
+            <br />
+            <br />
+            {{ form.submit(class="btn btn-primary") }}
+        </form>
+        <div class="span12">
+        </div>
+    </div>
+</div>
+<div class="row-fluid">
+    <div id="footer" class="span12"> 2020 ОРХБЗ Росгвардии <a href="{{ url_for('index') }}">База данных</a> </div>
+</div>
+</body>
+{% endblock %}

@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% block app_content %}
+<body>
+<div id="content">
+	<div id="content-header">
+		<div id="breadcrumb">
+			<a href="{{ url_for('index') }}" title="Перейти на главную" class="tip-bottom"><i class="icon-home"></i> Главная</a>
+			<a href="#" class="current">{{ substance.title }}</a>
+		</div>
+		<h1>{{ substance.title }}</h1>
+	</div>
+	<div class="container-fluid">
+		<div class="row-fluid">
+			<div class="span12">
+				<div class="widget-box">
+					<div class="widget-title">
+						<span class="icon">
+							<i class="icon-th-list"></i>
+						</span>
+						<h5>Краткая информация</h5>
+					</div>
+					<div class="widget-content">
+						<b>Вещество {{ substance.title }}</b> - {{ substance.fiz }}, <b>горючесть</b> - {{ substance.fiz2 }}.
+						<p><b>Пути отравления: Ингаляционный</b>( {{ substance.put }} ), <b>Резорбтивный</b>( {{ substance.put2 }} ),
+							<b>Артериально-венозный</b>( {{ substance.put3 }} ), <b>Пероральный</b>( {{ substance.put4 }} )</p>
+						<p><b>Клиника поражения:Смертельный исход</b>( {{ substance.kli }} ), <b>Раздражение слизистых глаз</b>
+							( {{ substance.kli2 }} ), <b>Затруднение дыхания</b>( {{ substance.kli3 }} ), <b>Судороги</b>( {{ substance.kli4 }} ),
+							<b>Кашель</b>( {{ substance.kli5 }} ), <b>Головокружение</b>( {{ substance.kli6 }} ), <b>Тошнота</b>( {{ substance.kli7 }} ),
+							<b>Нарушение вестибялурного аппарата</b>( {{ substance.kli8 }} ), <b>Понос</b>( {{ substance.kli9 }} ), <b>Окраска кожи</b>
+							( {{ substance.kli10 }} ).</p>
+					</div>
+				</div>
+			</div>
+			<div class="widget-content">
+				<div class="row-fluid">
+					<div class="span12 btn-icon-pg">
+						<ul>
+							{% if current_user.is_anonymous %}
+							{% else %}
+							<li><a href="{{ url_for('edit_substance', id_sub=substance.id) }}"><i class="icon-edit"></i> Редактировать</a> </li>
+							{% endif %}
+							<li><a href="{{ url_for('static', filename= 'Upload/' +substance.id|string + '.pdf') }}"><i class="icon-book"></i> Карточка </a></li>
+							{% if current_user.is_anonymous %}
+							{% else %}
+							<form action="" method="post">
+							{{ form.hidden_tag() }}
+								<div class="form-actions">
+							{{ form.submit(class="btn btn-danger", title="Удалить навсегда?") }}
+								</div>
+							</form>
+							{% endif %}
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="row-fluid">
+	<div id="footer" class="span12"> 2020 ОРХБЗ Росгвардии <a href="{{ url_for('index') }}">База данных</a> </div>
+</div>
+</body>
+{% endblock %}

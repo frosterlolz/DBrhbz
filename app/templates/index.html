@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block app_content %}
+<body>
+<div id="content">
+  <div id="content-header">
+    <div id="breadcrumb"> <a href="{{ url_for('index') }}" title="Перейти на главную" class="tip-bottom"><i class="icon-home"></i>Главная</a></div>
+    <h1>База данных по основным свойствам токсичных химикатов, безопасности и порядку
+      действий военнослужащих (сотрудников) при возникновении аварийных ситуаций с токсичными
+      химикатами</h1>
+  </div>
+  <div class="container-fluid">
+    <div class="row-fluid">
+      <div class="span12">
+        <div class="widget-box">
+          <div class="widget-title">
+            <span class="icon"><i class="icon-th"></i></span>
+            <h5>Физические свойства</h5>
+          </div>
+          <div class="widget-content nopadding">
+            <table class="table table-bordered data-table">
+              <thead>
+              <tr>
+                <th>Вещество</th>
+                <th>Агрегатное состояние</th>
+                <th>Горючесть</th>
+                <th>Карточка</th>
+              </tr>
+              </thead>
+              <tbody>
+              {% for substance in substances %}
+              <tr class="gradeX">
+                <td><a href="{{ url_for('substance', title=substance.title) }}">{{ substance.title }}</a></td>
+                <td class="center">{{ substance.fiz }}</td>
+                <td class="center">{{ substance.fiz2 }}</td>
+                <td class="center"><i class="icon icon-survey"></i><a href="{{ url_for('static', filename= 'Upload/' + substance.id|string + '.pdf') }}">карточка</a></td>
+              </tr>
+              {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row-fluid">
+  <div id="footer" class="span12"> 2020 ОРХБЗ Росгвардии <a href="{{ url_for('index') }}">База данных</a> </div>
+</div>
+</body>
+{% endblock %}
