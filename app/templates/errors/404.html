@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block app_content %}
+<body>
+<div id="content">
+  <div class="container-fluid">
+      <h1 align="center">404. Страница не найдена</h1>
+      <a href="{{ url_for('index') }}"><img src="../../static/img/demo/404.gif" alt="404"/></a>
+      <p><a href="{{ url_for('index') }}">Назад</a></p>
+  </div>
+</div>
+</body>
+{% endblock %}
